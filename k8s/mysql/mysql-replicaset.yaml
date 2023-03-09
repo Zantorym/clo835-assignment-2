@@ -1,0 +1,30 @@
+# Reference: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
+
+apiVersion: apps/v1
+
+kind: ReplicaSet
+
+metadata:
+  name: mysql-rs
+  labels:
+    app: mysql
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql-rs
+        image: 697366856643.dkr.ecr.us-east-1.amazonaws.com/mysql-images:v0.1
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: pass123
+        ports:
+        - containerPort: 3306
+          name: mysql
