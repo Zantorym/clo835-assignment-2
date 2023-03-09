@@ -1,0 +1,22 @@
+# Reference: https://kubernetes.io/docs/concepts/workloads/pods/
+# Reference: https://kubernetes.io/docs/tasks/run-application/run-single-instance-stateful-application/
+
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+  name: mysql-pod
+  labels:
+    app: mysql
+
+spec:
+  containers:
+  - name: mysql-pod
+    image: 697366856643.dkr.ecr.us-east-1.amazonaws.com/mysql-images:v0.1
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      value: pass123
+    ports:
+    - containerPort: 3306
+      name: mysql-pod

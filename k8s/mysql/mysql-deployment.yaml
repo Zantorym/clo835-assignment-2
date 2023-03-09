@@ -1,0 +1,30 @@
+# Reference: Week6Session2 mongo-deplyoment.yaml
+
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: mysql-deplmnt
+  labels:
+    app: mysql
+
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql-deplmnt
+        image: 697366856643.dkr.ecr.us-east-1.amazonaws.com/mysql-images:v0.1
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: pass123
+        ports:
+        - containerPort: 3306
+          name: mysql-deplmnt
