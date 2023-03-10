@@ -7,8 +7,6 @@ kind: Pod
 
 metadata:
   name: webapp-pod
-  labels:
-    app: employees
 
 spec:
   containers:
