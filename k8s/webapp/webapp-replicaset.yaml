@@ -1,0 +1,33 @@
+# Reference: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
+
+apiVersion: apps/v1
+
+kind: ReplicaSet
+
+metadata:
+  name: webapp-rs
+  labels:
+    app: employees
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: employees
+  template:
+    metadata:
+      labels:
+        app: employees
+    spec:
+      containers:
+      - name: webapp-rs
+        image: 697366856643.dkr.ecr.us-east-1.amazonaws.com/webapp-images:v0.1
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DBHOST
+          value: "10.244.0.5"
+        - name: DBPORT
+          value: "3306"
+        - name: DBPWD
+          value: "pass123"
