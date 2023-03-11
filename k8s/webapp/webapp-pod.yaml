@@ -7,9 +7,6 @@ kind: Pod
 
 metadata:
   name: webapp-pod
-  labels:
-    app: employees
-
 spec:
   containers:
   - name: webapp-pod
@@ -23,4 +20,3 @@ spec:
       value: "3306"
     - name: DBPWD
       value: "pass123"
-    
